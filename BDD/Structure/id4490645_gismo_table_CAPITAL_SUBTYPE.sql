@@ -11,5 +11,5 @@ CREATE TABLE CAPITAL_SUBTYPE (
   capitalSubType varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   capitalItem varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   project_id int(11) NOT NULL,
-  taskTypeId int(11) NOT NULL
+  task_type_id int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

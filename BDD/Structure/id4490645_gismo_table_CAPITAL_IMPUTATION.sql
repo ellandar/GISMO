@@ -25,8 +25,8 @@ CREATE TABLE CAPITAL_IMPUTATION (
   capitalOSId int(11) DEFAULT NULL,
   project_id int(11) NOT NULL,
   sub_project_id int(11) DEFAULT NULL,
-  taskTypeId int(11) DEFAULT NULL,
-  taskId int(11) DEFAULT NULL,
+  task_type_id int(11) DEFAULT NULL,
+  task_id int(11) DEFAULT NULL,
   warning varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   error varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
