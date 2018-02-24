@@ -1,0 +1,56 @@
+    <mat-card *ngIf="weekNumber" ngForm #weekNumberForm="ngForm">
+        <mat-card-title>WeekNumber Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="weekNumber.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateyear"  class="required">Dateyear</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="dateyear" type="number" [(ngModel)]="weekNumber.dateyear"  required  name="dateyear" #dateyear="ngModel" />
+                    
+                    <mat-error *ngIf="!dateyear.valid && dateyear.dirty && dateyear.errors['required']">
+                        Dateyear is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateweek"  class="required">Dateweek</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="dateweek" type="number" [(ngModel)]="weekNumber.dateweek"  required  name="dateweek" #dateweek="ngModel" />
+                    
+                    <mat-error *ngIf="!dateweek.valid && dateweek.dirty && dateweek.errors['required']">
+                        Dateweek is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateday"  class="required">Dateday</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-select [(ngModel)]="weekNumber.dateday" name="dateday" #dateday="ngModel" style="width: 90%">
+                    <mat-option *ngFor="let datedayOption of datedayOptions" [value]="datedayOption.value">{{ datedayOption.label }}</mat-option>
+                </mat-select>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="date"  class="required">Date</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container>
+                  <input matInput id="date" [matDatepicker]="datePicker" [(ngModel)]="weekNumber.date"  required  name="date" #date="ngModel">
+                  <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                </mat-input-container>
+                <mat-datepicker #datePicker></mat-datepicker>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!weekNumberForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

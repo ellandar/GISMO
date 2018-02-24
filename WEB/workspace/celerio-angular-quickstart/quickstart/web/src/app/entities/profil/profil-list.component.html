@@ -1,0 +1,51 @@
+<div class="ContentSideSections Implementation">
+    <mat-card *ngIf="!sub">
+        <mat-card-title>Search Profil with search criterias</mat-card-title>
+        <mat-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #profilForm="ngForm">
+        </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="search(dt)"><mat-icon>search</mat-icon>Search</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <br/>
+    <mat-card>
+    <mat-card-content>
+    <p>The list of results below is server-side paginated...</p>
+
+    <p-dataTable #dt [value]="currentPage.content"
+                 [lazy]="true"
+                 [rows]="10"
+                 [paginator]="currentPage.totalElements > 10"
+                 [totalRecords]="currentPage.totalElements"
+                 (onLazyLoad)="loadPage($event)"
+                 selectionMode="single"
+                 (onRowSelect)="onRowSelect($event)"
+                 [rowsPerPageOptions]="[5,10,20,50,100]"
+                 [responsive]="true">
+        <p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+        <p-column field="id" header="Id" sortable="true">
+        </p-column>
+        <p-column field="type" header="Type" sortable="true">
+        </p-column>
+        <p-column field="userId" header="User Id" sortable="true">
+        </p-column>
+        <p-column field="projectGroupId" header="Project Group Id" sortable="true">
+        </p-column>
+        <p-column field="projectId" header="Project Id" sortable="true">
+        </p-column>
+        <p-column styleClass="col-icon">
+            <ng-template let-profil="rowData" pTemplate="body">
+                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(profil)" style="float:left"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon>Add</button>
+    </mat-card-actions>
+    </mat-card>
+</div>

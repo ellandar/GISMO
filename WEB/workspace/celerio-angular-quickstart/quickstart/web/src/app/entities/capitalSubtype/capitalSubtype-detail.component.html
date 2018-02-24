@@ -1,0 +1,59 @@
+    <mat-card *ngIf="capitalSubtype" ngForm #capitalSubtypeForm="ngForm">
+        <mat-card-title>CapitalSubtype Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="capitalSubtype.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="capitalsubtype2"  class="required">Capitalsubtype2</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="capitalsubtype2" [(ngModel)]="capitalSubtype.capitalsubtype2"  required   autoResize="true" name="capitalsubtype2" #capitalsubtype2="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!capitalsubtype2.valid && capitalsubtype2.dirty && capitalsubtype2.errors['required']">
+                        Capitalsubtype2 is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="capitalitem" >Capitalitem</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="capitalitem" [(ngModel)]="capitalSubtype.capitalitem"   autoResize="true" name="capitalitem" #capitalitem="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectId"  class="required">Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectId" type="number" [(ngModel)]="capitalSubtype.projectId"  required  name="projectId" #projectId="ngModel" />
+                    
+                    <mat-error *ngIf="!projectId.valid && projectId.dirty && projectId.errors['required']">
+                        Project Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="tasktypeid"  class="required">Tasktypeid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="tasktypeid" type="number" [(ngModel)]="capitalSubtype.tasktypeid"  required  name="tasktypeid" #tasktypeid="ngModel" />
+                    
+                    <mat-error *ngIf="!tasktypeid.valid && tasktypeid.dirty && tasktypeid.errors['required']">
+                        Tasktypeid is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!capitalSubtypeForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

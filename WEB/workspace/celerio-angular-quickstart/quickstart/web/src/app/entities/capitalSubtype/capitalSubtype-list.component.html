@@ -1,0 +1,67 @@
+<div class="ContentSideSections Implementation">
+    <mat-card *ngIf="!sub">
+        <mat-card-title>Search CapitalSubtype with search criterias</mat-card-title>
+        <mat-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #capitalSubtypeForm="ngForm">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="capitalsubtype2">Capitalsubtype2</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="capitalsubtype2" [(ngModel)]="example.capitalsubtype2" name="capitalsubtype2" #capitalsubtype2="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="capitalitem">Capitalitem</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="capitalitem" [(ngModel)]="example.capitalitem" name="capitalitem" #capitalitem="ngModel"/>
+                </div>
+            </div>
+        </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="search(dt)"><mat-icon>search</mat-icon>Search</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <br/>
+    <mat-card>
+    <mat-card-content>
+    <p>The list of results below is server-side paginated...</p>
+
+    <p-dataTable #dt [value]="currentPage.content"
+                 [lazy]="true"
+                 [rows]="10"
+                 [paginator]="currentPage.totalElements > 10"
+                 [totalRecords]="currentPage.totalElements"
+                 (onLazyLoad)="loadPage($event)"
+                 selectionMode="single"
+                 (onRowSelect)="onRowSelect($event)"
+                 [rowsPerPageOptions]="[5,10,20,50,100]"
+                 [responsive]="true">
+        <p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+        <p-column field="id" header="Id" sortable="true">
+        </p-column>
+        <p-column field="capitalsubtype2" header="Capitalsubtype2" sortable="true">
+        </p-column>
+        <p-column field="capitalitem" header="Capitalitem" sortable="true">
+        </p-column>
+        <p-column field="projectId" header="Project Id" sortable="true">
+        </p-column>
+        <p-column field="tasktypeid" header="Tasktypeid" sortable="true">
+        </p-column>
+        <p-column styleClass="col-icon">
+            <ng-template let-capitalSubtype="rowData" pTemplate="body">
+                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(capitalSubtype)" style="float:left"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon>Add</button>
+    </mat-card-actions>
+    </mat-card>
+</div>

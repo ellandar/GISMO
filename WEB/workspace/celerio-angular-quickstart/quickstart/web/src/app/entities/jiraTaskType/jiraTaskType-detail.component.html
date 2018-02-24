@@ -1,0 +1,46 @@
+    <mat-card *ngIf="jiraTaskType" ngForm #jiraTaskTypeForm="ngForm">
+        <mat-card-title>JiraTaskType Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="jiraTaskType.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="issuetype"  class="required">Issuetype</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="issuetype" [(ngModel)]="jiraTaskType.issuetype"  required   autoResize="true" name="issuetype" #issuetype="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!issuetype.valid && issuetype.dirty && issuetype.errors['required']">
+                        Issuetype is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="myComponent" >My Component</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="myComponent" [(ngModel)]="jiraTaskType.myComponent"   autoResize="true" name="myComponent" #myComponent="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskTypeId" >Task Type Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskTypeId" type="number" [(ngModel)]="jiraTaskType.taskTypeId"  name="taskTypeId" #taskTypeId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!jiraTaskTypeForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

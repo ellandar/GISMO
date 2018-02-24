@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.jaxio.com/schema/celerio ./celerio.xsd">
+    <configuration rootPackage="com.apside.gismo" applicationName="GISMO">
+        <!-- Which tables are used for generation -->
+        <tables>
+            <!-- <table include="false" pattern="*_AUDIT"/> -->
+            <table include="false" pattern="jhi_persistent_*"/>
+        </tables>
+
+        <!-- global number mapping (optional) -->
+        <numberMappings>
+            <numberMapping mappedType="M_BOOLEAN" columnSizeMin="1" columnSizeMax="2" columnDecimalDigitsMin="0"
+                           columnDecimalDigitsMax="0"/>
+            <!-- <numberMapping mappedType="M_BIGDECIMAL" columnSizeMin="10" columnDecimalDigitsMin="4"/> -->
+        </numberMappings>
+
+        <!-- global date mapping (optional) -->
+        <dateMappings>
+            <!-- <dateMapping columnNameRegExp="VERSION" mappedType="M_UTILDATE"/> -->
+            <dateMapping columnJdbcType="TIMESTAMP" mappedType="M_INSTANT"/>
+            <dateMapping columnJdbcType="DATE" mappedType="M_LOCALDATE"/>
+        </dateMappings>
+
+        <headerComment>
+
+        </headerComment>
+
+    </configuration>
+
+
+    <!-- CHANGE IT OR COMMENT IT IF YOU USE YOUR OWN DATABASE -->
+
+    <entityConfigs>
+
+
+<entityConfig tableName="CAPITAL_IMPUTATION"><columnConfigs>
+	<columnConfig columnName="weekId">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="user_id">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="capitalOSId">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="sub_project_id">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="taskTypeId">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>		
+	<columnConfig columnName="taskId">
+		<oneToManyConfig elementVar="cap_imputations" var="cap_imputationss" orphanRemoval="true"/>
+	</columnConfig>	
+	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="CAPITAL_OS"><columnConfigs>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="cap_os" var="cap_oss" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="version_id">
+		<oneToManyConfig elementVar="cap_os" var="cap_oss" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="CAPITAL_SUBTYPE"><columnConfigs>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="cap_subtype" var="cap_subtypes" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="taskTypeId">
+		<oneToManyConfig elementVar="cap_subtype" var="cap_subtypes" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="GISMO_IMPUTATION"><columnConfigs>
+	<columnConfig columnName="task_id">
+		<oneToManyConfig elementVar="imputation" var="imputations" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="user_id">
+		<oneToManyConfig elementVar="imputation" var="imputations" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="weekNumberId">
+		<oneToManyConfig elementVar="imputation" var="imputations" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="JIRA_TASK"><columnConfigs>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="version_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="sub_project_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="sub_version_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="task_type_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="task_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="JIRA_TASK_TYPE"><columnConfigs>
+	<columnConfig columnName="task_type_id">
+		<oneToManyConfig elementVar="jiraTask" var="jiraTasks" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+
+<entityConfig tableName="PROFIL"><columnConfigs>
+	<columnConfig columnName="type" sharedEnumName="ProfileType"/>
+	<columnConfig columnName="user_id">
+		<oneToManyConfig elementVar="profile" var="profiles" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="project_group_id">
+		<oneToManyConfig elementVar="profile" var="profiles" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="profile" var="profiles" orphanRemoval="true"/>
+	</columnConfig>
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="PROJECT"><columnConfigs>
+	<columnConfig columnName="project_group_id">
+		<oneToManyConfig elementVar="project" var="projects" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+
+<entityConfig tableName="SUB_PROJECT"><columnConfigs>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="sub_project" var="sub_projects" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="SUB_VERSION"><columnConfigs>
+	<columnConfig columnName="sub_project_id">
+		<oneToManyConfig elementVar="sub_version" var="sub_versions" orphanRemoval="true"/>
+	</columnConfig>	
+	<columnConfig columnName="version_id">
+		<oneToManyConfig elementVar="sub_version" var="sub_versions" orphanRemoval="true"/>
+	</columnConfig>	
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="TASK"><columnConfigs>
+	<columnConfig columnName="task_type_id">
+		<oneToManyConfig elementVar="task" var="tasks" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="level" sharedEnumName="TaskLevel"/>
+	<columnConfig columnName="project_Id">
+		<oneToManyConfig elementVar="task" var="tasks" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="version_id">
+		<oneToManyConfig elementVar="task" var="tasks" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="sub_project_id">
+		<oneToManyConfig elementVar="task" var="tasks" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="sub_version_Id">
+		<oneToManyConfig elementVar="task" var="tasks" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="state" sharedEnumName="TaskStatus"/>
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="TASK_LINK"><columnConfigs>
+	<columnConfig columnName="child_task_id">
+		<oneToManyConfig elementVar="child" var="childs" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="parent_task_id">
+		<oneToManyConfig elementVar="parent" var="parents" orphanRemoval="true"/>
+	</columnConfig>
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="TASK_TYPE"><columnConfigs>
+	<columnConfig columnName="type" sharedEnumName="TaskFormat"/>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="taskType" var="taskTypes" orphanRemoval="true"/>
+	</columnConfig>
+	<columnConfig columnName="default_task_id">
+		<oneToManyConfig elementVar="defaultTask" var="defaultTasks" orphanRemoval="true"/>
+	</columnConfig>
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="VERSION"><columnConfigs>
+	<columnConfig columnName="project_id">
+		<oneToManyConfig elementVar="version" var="versions" orphanRemoval="true"/>
+	</columnConfig>
+</columnConfigs></entityConfig>
+
+<entityConfig tableName="WEEK_NUMBER"><columnConfigs>
+	<columnConfig columnName="dateDay" sharedEnumName="WeekDay"/>
+</columnConfigs></entityConfig>
+<!--
+ 
+        <entityConfig tableName="USER">
+            <columnConfigs>
+                <columnConfig columnName="civility" sharedEnumName="Civility"/>
+                <columnConfig columnName="country_code" sharedEnumName="CountryCode"/>
+                <columnConfig columnName="password" searchField="false" searchResult="false"/>
+            </columnConfigs>
+        </entityConfig>
+        <entityConfig tableName="PASSPORT">
+            <columnConfigs>
+                <columnConfig columnName="holder_id" associationDirection="BIDIRECTIONAL">
+                    <oneToManyConfig var="passportHolder" />
+                    <inverseOneToOneConfig var="passport" /> 
+                </columnConfig>
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="AUTHOR">
+            <columnConfigs>
+                <columnConfig columnName="first_name" min="2" searchResult="true" displayOrder="3"/>
+                <columnConfig columnName="last_name" min="2" searchResult="true" displayOrder="2"/>
+                <columnConfig columnName="civility" sharedEnumName="Civility" searchResult="true" displayOrder="1"/>
+                <columnConfig columnName="favorite_author_id" searchResult="true" displayOrder="4"/>
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="BOOK">
+            <columnConfigs>
+                <columnConfig columnName="author_id">
+                    <oneToManyConfig elementVar="book" var="books" orphanRemoval="true"/>
+                </columnConfig>
+                <columnConfig columnName="co_author_id" searchField="false" />
+                <columnConfig columnName="extract_binary">
+                    <labels>
+                        <label lang="fr" value="Extrait (fichier)..."/>
+                        <label value="Extract (file)..."/>
+                    </labels>
+                </columnConfig>
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="PROJECT">
+            <columnConfigs>
+                <columnConfig columnName="author_id">
+                    <oneToManyConfig elementVar="project" var="projects" orphanRemoval="true"/>
+                </columnConfig>
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="USE_CASE_3">
+            <columnConfigs>
+                <columnConfig columnName="id2">
+                    <oneToManyConfig var="useCase3s" orphanRemoval="true"/>
+                </columnConfig>
+            </columnConfigs>
+        </entityConfig>
+-->
+    </entityConfigs>
+
+    <!-- CHANGE IT OR COMMENT IT IF YOU USE YOUR OWN DATABASE -->
+    <!-- Generate enums used by the entities above -->
+    <sharedEnumConfigs>
+	
+        <sharedEnumConfig name="ProfileType" type="STRING">
+            <enumValues>
+                <enumValue value="USER"><labels><label value="Utilisateur"/></labels></enumValue>
+                <enumValue value="ADMIN"><labels><label value="Administrateur"/></labels></enumValue>
+                <enumValue value="CDP"><labels><label value="Chef de Projet"/></labels></enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+	
+        <sharedEnumConfig name="TaskLevel" type="STRING">
+            <enumValues>
+                <enumValue value="Simple"><labels><label value="Simple"/></labels></enumValue>
+                <enumValue value="Complexe"><labels><label value="Complexe"/></labels></enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+	
+        <sharedEnumConfig name="TaskStatus" type="STRING">
+            <enumValues>
+                <enumValue value="OPEN"><labels><label value="Ouverte"/></labels></enumValue>
+                <enumValue value="IN_PROGRESS"><labels><label value="En cours"/></labels></enumValue>
+                <enumValue value="DELIVERED"><labels><label value="Livrée"/></labels></enumValue>
+                <enumValue value="CLOSED"><labels><label value="Close"/></labels></enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+	 
+        <sharedEnumConfig name="TaskFormat" type="STRING">
+            <enumValues>
+                <enumValue value="UO"><labels><label value="Unité d'oeuvre"/></labels></enumValue>
+                <enumValue value="SUPPORT"><labels><label value="Support/AT"/></labels></enumValue>
+                <enumValue value="FORFAIT"><labels><label value="Forfait"/></labels></enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+		
+        <sharedEnumConfig name="WeekDay" type="STRING">
+            <enumValues>
+                <enumValue value="Monday"><labels><label value="Lundi"/></labels></enumValue>
+                <enumValue value="Tuesday"><labels><label value="Mardi"/></labels></enumValue>
+                <enumValue value="Wednesday"><labels><label value="Mercredi"/></labels></enumValue>
+                <enumValue value="Thursday"><labels><label value="Jeudi"/></labels></enumValue>
+                <enumValue value="Friday"><labels><label value="Vendredi"/></labels></enumValue>
+                <enumValue value="Saturday"><labels><label value="Samedi"/></labels></enumValue>
+                <enumValue value="Sunday"><labels><label value="Dimanche"/></labels></enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+	    
+        <sharedEnumConfig name="Civility" type="STRING">
+            <enumValues>
+                <enumValue value="MR">
+                    <labels>
+                        <label value="Mister"/>
+                        <label value="Monsieur" lang="fr"/>
+                    </labels>
+                </enumValue>
+                <enumValue value="MS">
+                    <labels>
+                        <label value="Miss"/>
+                        <label value="Madame" lang="fr"/>
+                    </labels>
+                </enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+        <sharedEnumConfig name="CountryCode" type="CUSTOM">
+            <enumValues>
+                <enumValue name="FRANCE" value="+33">
+                    <labels>
+                        <label value="France"/>
+                        <label value="France" lang="fr"/>
+                    </labels>
+                </enumValue>
+                <enumValue name="ITALY" value="+39">
+                    <labels>
+                        <label value="Italy"/>
+                        <label value="Italie" lang="fr"/>
+                    </labels>
+                </enumValue>
+                <enumValue name="USA" value="+1">
+                    <labels>
+                        <label value="United-States"/>
+                        <label value="Etats-Unis" lang="fr"/>
+                    </labels>
+                </enumValue>
+            </enumValues>
+        </sharedEnumConfig>
+
+	    
+    </sharedEnumConfigs>
+</celerio>

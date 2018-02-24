@@ -1,0 +1,32 @@
+    <mat-card *ngIf="taskLink" ngForm #taskLinkForm="ngForm">
+        <mat-card-title>TaskLink Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="childTaskId"  class="required">Child Task Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="childTaskId" type="number" [(ngModel)]="taskLink.id.childTaskId"  required  name="childTaskId" #childTaskId="ngModel" />
+                    
+                    <mat-error *ngIf="!childTaskId.valid && childTaskId.dirty && childTaskId.errors['required']">
+                        Child Task Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="parentTaskId"  class="required">Parent Task Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="parentTaskId" type="number" [(ngModel)]="taskLink.id.parentTaskId"  required  name="parentTaskId" #parentTaskId="ngModel" />
+                    
+                    <mat-error *ngIf="!parentTaskId.valid && parentTaskId.dirty && parentTaskId.errors['required']">
+                        Parent Task Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!taskLinkForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

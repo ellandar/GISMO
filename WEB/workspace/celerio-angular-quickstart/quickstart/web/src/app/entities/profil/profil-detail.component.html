@@ -1,0 +1,52 @@
+    <mat-card *ngIf="profil" ngForm #profilForm="ngForm">
+        <mat-card-title>Profil Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="profil.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="type"  class="required">Type</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-select [(ngModel)]="profil.type" name="type" #type="ngModel" style="width: 90%">
+                    <mat-option *ngFor="let typeOption of typeOptions" [value]="typeOption.value">{{ typeOption.label }}</mat-option>
+                </mat-select>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="userId"  class="required">User Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="userId" type="number" [(ngModel)]="profil.userId"  required  name="userId" #userId="ngModel" />
+                    
+                    <mat-error *ngIf="!userId.valid && userId.dirty && userId.errors['required']">
+                        User Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectGroupId" >Project Group Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectGroupId" type="number" [(ngModel)]="profil.projectGroupId"  name="projectGroupId" #projectGroupId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectId" >Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectId" type="number" [(ngModel)]="profil.projectId"  name="projectId" #projectId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!profilForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

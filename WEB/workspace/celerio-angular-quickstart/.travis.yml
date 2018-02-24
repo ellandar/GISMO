@@ -1,0 +1,41 @@
+language: node_js
+dist: trusty
+node_js:
+  - "8.9.4"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - oracle-java8-installer
+      - google-chrome-stable
+      - google-chrome-beta      
+cache:
+  directories:
+    - $HOME/.m2
+    - $TRAVIS_BUILD_DIR/quickstart/web/node_modules
+before_install:
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  - export PATH=$JAVA_HOME/bin:$PATH
+  - java -version
+  - npm install -g @angular/cli
+  - export DISPLAY=:99.0
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - sh -e /etc/init.d/xvfb start
+install:
+  - cd "$TRAVIS_BUILD_DIR"/quickstart
+  - ng --version
+  - ng new web
+  - rm web/src/app/app.module.ts web/src/app/app.component.* web/src/styles.css
+  - mvn -Pdb,metadata,gen generate-sources
+  - cd web
+  - npm i @angular/material @angular/cdk
+  - npm i primeng@5.0.2
+  - npm i font-awesome
+  - cd ..
+script:
+  - mvn test
+  - cd web
+  - ng build
+  - ng test --watch false
+  - ng e2e

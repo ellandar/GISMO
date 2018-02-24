@@ -1,0 +1,193 @@
+    <mat-card *ngIf="capitalImputation" ngForm #capitalImputationForm="ngForm">
+        <mat-card-title>CapitalImputation Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="capitalImputation.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateyear"  class="required">Dateyear</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="dateyear" [(ngModel)]="capitalImputation.dateyear"  required   autoResize="true" name="dateyear" #dateyear="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!dateyear.valid && dateyear.dirty && dateyear.errors['required']">
+                        Dateyear is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateweek"  class="required">Dateweek</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="dateweek" [(ngModel)]="capitalImputation.dateweek"  required   autoResize="true" name="dateweek" #dateweek="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!dateweek.valid && dateweek.dirty && dateweek.errors['required']">
+                        Dateweek is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="dateday"  class="required">Dateday</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="dateday" [(ngModel)]="capitalImputation.dateday"  required   autoResize="true" name="dateday" #dateday="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!dateday.valid && dateday.dirty && dateday.errors['required']">
+                        Dateday is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="username"  class="required">Username</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="username" [(ngModel)]="capitalImputation.username"  required   autoResize="true" name="username" #username="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!username.valid && username.dirty && username.errors['required']">
+                        Username is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="osname"  class="required">Osname</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="osname" [(ngModel)]="capitalImputation.osname"  required   autoResize="true" name="osname" #osname="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!osname.valid && osname.dirty && osname.errors['required']">
+                        Osname is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="timeconsume"  class="required">Timeconsume</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="timeconsume" type="number" [(ngModel)]="capitalImputation.timeconsume"  required  name="timeconsume" #timeconsume="ngModel" />
+                    
+                    <mat-error *ngIf="!timeconsume.valid && timeconsume.dirty && timeconsume.errors['required']">
+                        Timeconsume is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subtype" >Subtype</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="subtype" [(ngModel)]="capitalImputation.subtype"   autoResize="true" name="subtype" #subtype="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="osident"  class="required">Osident</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="osident" [(ngModel)]="capitalImputation.osident"  required   autoResize="true" name="osident" #osident="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!osident.valid && osident.dirty && osident.errors['required']">
+                        Osident is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="item" >Item</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="item" [(ngModel)]="capitalImputation.item"   autoResize="true" name="item" #item="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="complement" >Complement</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="complement" [(ngModel)]="capitalImputation.complement"   autoResize="true" name="complement" #complement="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="comment" >Comment</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="comment" [(ngModel)]="capitalImputation.comment"   autoResize="true" name="comment" #comment="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="phase" >Phase</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="phase" [(ngModel)]="capitalImputation.phase"   autoResize="true" name="phase" #phase="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="weekid" >Weekid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="weekid" type="number" [(ngModel)]="capitalImputation.weekid"  name="weekid" #weekid="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="userId" >User Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="userId" type="number" [(ngModel)]="capitalImputation.userId"  name="userId" #userId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="capitalosid" >Capitalosid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="capitalosid" type="number" [(ngModel)]="capitalImputation.capitalosid"  name="capitalosid" #capitalosid="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectId"  class="required">Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectId" type="number" [(ngModel)]="capitalImputation.projectId"  required  name="projectId" #projectId="ngModel" />
+                    
+                    <mat-error *ngIf="!projectId.valid && projectId.dirty && projectId.errors['required']">
+                        Project Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subProjectId" >Sub Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="subProjectId" type="number" [(ngModel)]="capitalImputation.subProjectId"  name="subProjectId" #subProjectId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="tasktypeid" >Tasktypeid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="tasktypeid" type="number" [(ngModel)]="capitalImputation.tasktypeid"  name="tasktypeid" #tasktypeid="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskid" >Taskid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskid" type="number" [(ngModel)]="capitalImputation.taskid"  name="taskid" #taskid="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="warning" >Warning</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="warning" [(ngModel)]="capitalImputation.warning"   autoResize="true" name="warning" #warning="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="error" >Error</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="error" [(ngModel)]="capitalImputation.error"   autoResize="true" name="error" #error="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!capitalImputationForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

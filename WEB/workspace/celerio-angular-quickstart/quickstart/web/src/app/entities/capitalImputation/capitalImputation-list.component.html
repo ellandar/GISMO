@@ -1,0 +1,157 @@
+<div class="ContentSideSections Implementation">
+    <mat-card *ngIf="!sub">
+        <mat-card-title>Search CapitalImputation with search criterias</mat-card-title>
+        <mat-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #capitalImputationForm="ngForm">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="dateyear">Dateyear</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="dateyear" [(ngModel)]="example.dateyear" name="dateyear" #dateyear="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="dateweek">Dateweek</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="dateweek" [(ngModel)]="example.dateweek" name="dateweek" #dateweek="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="dateday">Dateday</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="dateday" [(ngModel)]="example.dateday" name="dateday" #dateday="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="username">Username</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="username" [(ngModel)]="example.username" name="username" #username="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="osname">Osname</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="osname" [(ngModel)]="example.osname" name="osname" #osname="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="subtype">Subtype</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="subtype" [(ngModel)]="example.subtype" name="subtype" #subtype="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="osident">Osident</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="osident" [(ngModel)]="example.osident" name="osident" #osident="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="item">Item</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="item" [(ngModel)]="example.item" name="item" #item="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="complement">Complement</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="complement" [(ngModel)]="example.complement" name="complement" #complement="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="comment">Comment</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="comment" [(ngModel)]="example.comment" name="comment" #comment="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="phase">Phase</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="phase" [(ngModel)]="example.phase" name="phase" #phase="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="warning">Warning</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="warning" [(ngModel)]="example.warning" name="warning" #warning="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="error">Error</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="error" [(ngModel)]="example.error" name="error" #error="ngModel"/>
+                </div>
+            </div>
+        </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="search(dt)"><mat-icon>search</mat-icon>Search</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <br/>
+    <mat-card>
+    <mat-card-content>
+    <p>The list of results below is server-side paginated...</p>
+
+    <p-dataTable #dt [value]="currentPage.content"
+                 [lazy]="true"
+                 [rows]="10"
+                 [paginator]="currentPage.totalElements > 10"
+                 [totalRecords]="currentPage.totalElements"
+                 (onLazyLoad)="loadPage($event)"
+                 selectionMode="single"
+                 (onRowSelect)="onRowSelect($event)"
+                 [rowsPerPageOptions]="[5,10,20,50,100]"
+                 [responsive]="true">
+        <p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+        <p-column field="id" header="Id" sortable="true">
+        </p-column>
+        <p-column field="dateyear" header="Dateyear" sortable="true">
+        </p-column>
+        <p-column field="dateweek" header="Dateweek" sortable="true">
+        </p-column>
+        <p-column field="dateday" header="Dateday" sortable="true">
+        </p-column>
+        <p-column field="username" header="Username" sortable="true">
+        </p-column>
+        <p-column field="osname" header="Osname" sortable="true">
+        </p-column>
+        <p-column styleClass="col-icon">
+            <ng-template let-capitalImputation="rowData" pTemplate="body">
+                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(capitalImputation)" style="float:left"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon>Add</button>
+    </mat-card-actions>
+    </mat-card>
+</div>

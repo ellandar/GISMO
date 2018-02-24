@@ -1,0 +1,189 @@
+<div class="ContentSideSections Implementation">
+    <mat-card *ngIf="!sub">
+        <mat-card-title>Search JiraTask with search criterias</mat-card-title>
+        <mat-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #jiraTaskForm="ngForm">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="projectname">Projectname</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="projectname" [(ngModel)]="example.projectname" name="projectname" #projectname="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="ident">Ident</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="ident" [(ngModel)]="example.ident" name="ident" #ident="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="issuetype">Issuetype</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="issuetype" [(ngModel)]="example.issuetype" name="issuetype" #issuetype="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="summary">Summary</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="summary" [(ngModel)]="example.summary" name="summary" #summary="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="severity">Severity</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="severity" [(ngModel)]="example.severity" name="severity" #severity="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="status">Status</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="status" [(ngModel)]="example.status" name="status" #status="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="priority">Priority</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="priority" [(ngModel)]="example.priority" name="priority" #priority="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="assignee">Assignee</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="assignee" [(ngModel)]="example.assignee" name="assignee" #assignee="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="reporter">Reporter</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="reporter" [(ngModel)]="example.reporter" name="reporter" #reporter="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="components">Components</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="components" [(ngModel)]="example.components" name="components" #components="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="linkedissue">Linkedissue</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="linkedissue" [(ngModel)]="example.linkedissue" name="linkedissue" #linkedissue="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="affversion">Affversion</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="affversion" [(ngModel)]="example.affversion" name="affversion" #affversion="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="targetversion">Targetversion</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="targetversion" [(ngModel)]="example.targetversion" name="targetversion" #targetversion="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="deliveryversion">Deliveryversion</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="deliveryversion" [(ngModel)]="example.deliveryversion" name="deliveryversion" #deliveryversion="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="state">State</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="state" [(ngModel)]="example.state" name="state" #state="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="warning">Warning</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="warning" [(ngModel)]="example.warning" name="warning" #warning="ngModel"/>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="error">Error</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="error" [(ngModel)]="example.error" name="error" #error="ngModel"/>
+                </div>
+            </div>
+        </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="search(dt)"><mat-icon>search</mat-icon>Search</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <br/>
+    <mat-card>
+    <mat-card-content>
+    <p>The list of results below is server-side paginated...</p>
+
+    <p-dataTable #dt [value]="currentPage.content"
+                 [lazy]="true"
+                 [rows]="10"
+                 [paginator]="currentPage.totalElements > 10"
+                 [totalRecords]="currentPage.totalElements"
+                 (onLazyLoad)="loadPage($event)"
+                 selectionMode="single"
+                 (onRowSelect)="onRowSelect($event)"
+                 [rowsPerPageOptions]="[5,10,20,50,100]"
+                 [responsive]="true">
+        <p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+        <p-column field="id" header="Id" sortable="true">
+        </p-column>
+        <p-column field="projectname" header="Projectname" sortable="true">
+        </p-column>
+        <p-column field="ident" header="Ident" sortable="true">
+        </p-column>
+        <p-column field="issuetype" header="Issuetype" sortable="true">
+        </p-column>
+        <p-column field="summary" header="Summary" sortable="true">
+        </p-column>
+        <p-column field="severity" header="Severity" sortable="true">
+        </p-column>
+        <p-column styleClass="col-icon">
+            <ng-template let-jiraTask="rowData" pTemplate="body">
+                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(jiraTask)" style="float:left"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon>Add</button>
+    </mat-card-actions>
+    </mat-card>
+</div>

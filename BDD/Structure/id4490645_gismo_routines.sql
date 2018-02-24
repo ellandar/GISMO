@@ -71,6 +71,15 @@ SELECT cap.task_id, cap.user_id, week.date, cap.timeConsume, cap.comment, cap.we
 
 END$$
 
+DROP PROCEDURE CAPITAL_4_IMPORT$$
+CREATE PROCEDURE CAPITAL_4_IMPORT() BEGIN
+
+INSERT INTO GISMO_IMPUTATION(task_id, user_id, imputDate, imputTime, detail, weekNumberId)
+SELECT cap.task_id, cap.user_id, week.date, cap.timeConsume, cap.comment, cap.weekId FROM CAPITAL_IMPUTATION as cap, GISMO_WEEK_NUMBER as week WHERE cap.weekId = week.id and cap.error is null and cap.task_id is not null;
+
+
+
+END$$
 
 DROP PROCEDURE IF EXISTS GISMO_CHECK_1$$
 CREATE DEFINER=id4490645_lbarre@% PROCEDURE GISMO_CHECK_1 ()  NO SQL

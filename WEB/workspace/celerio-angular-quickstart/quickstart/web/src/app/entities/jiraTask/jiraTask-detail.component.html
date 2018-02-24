@@ -1,0 +1,213 @@
+    <mat-card *ngIf="jiraTask" ngForm #jiraTaskForm="ngForm">
+        <mat-card-title>JiraTask Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="jiraTask.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectname"  class="required">Projectname</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="projectname" [(ngModel)]="jiraTask.projectname"  required   autoResize="true" name="projectname" #projectname="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!projectname.valid && projectname.dirty && projectname.errors['required']">
+                        Projectname is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="ident"  class="required">Ident</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="ident" [(ngModel)]="jiraTask.ident"  required   autoResize="true" name="ident" #ident="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!ident.valid && ident.dirty && ident.errors['required']">
+                        Ident is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="issuetype"  class="required">Issuetype</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="issuetype" [(ngModel)]="jiraTask.issuetype"  required   autoResize="true" name="issuetype" #issuetype="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!issuetype.valid && issuetype.dirty && issuetype.errors['required']">
+                        Issuetype is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="summary"  class="required">Summary</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="summary" [(ngModel)]="jiraTask.summary"  required   autoResize="true" name="summary" #summary="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!summary.valid && summary.dirty && summary.errors['required']">
+                        Summary is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="severity"  class="required">Severity</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="severity" [(ngModel)]="jiraTask.severity"  required   autoResize="true" name="severity" #severity="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!severity.valid && severity.dirty && severity.errors['required']">
+                        Severity is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="status"  class="required">Status</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="status" [(ngModel)]="jiraTask.status"  required   autoResize="true" name="status" #status="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!status.valid && status.dirty && status.errors['required']">
+                        Status is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="priority" >Priority</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="priority" [(ngModel)]="jiraTask.priority"   autoResize="true" name="priority" #priority="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="assignee" >Assignee</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="assignee" [(ngModel)]="jiraTask.assignee"   autoResize="true" name="assignee" #assignee="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="reporter"  class="required">Reporter</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="reporter" [(ngModel)]="jiraTask.reporter"  required   autoResize="true" name="reporter" #reporter="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!reporter.valid && reporter.dirty && reporter.errors['required']">
+                        Reporter is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="components"  class="required">Components</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="components" [(ngModel)]="jiraTask.components"  required   autoResize="true" name="components" #components="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!components.valid && components.dirty && components.errors['required']">
+                        Components is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="linkedissue" >Linkedissue</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="linkedissue" [(ngModel)]="jiraTask.linkedissue"   autoResize="true" name="linkedissue" #linkedissue="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="affversion"  class="required">Affversion</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="affversion" [(ngModel)]="jiraTask.affversion"  required   autoResize="true" name="affversion" #affversion="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!affversion.valid && affversion.dirty && affversion.errors['required']">
+                        Affversion is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="targetversion" >Targetversion</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="targetversion" [(ngModel)]="jiraTask.targetversion"   autoResize="true" name="targetversion" #targetversion="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="deliveryversion" >Deliveryversion</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="deliveryversion" [(ngModel)]="jiraTask.deliveryversion"   autoResize="true" name="deliveryversion" #deliveryversion="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectId" >Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectId" type="number" [(ngModel)]="jiraTask.projectId"  name="projectId" #projectId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="versionId" >Version Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="versionId" type="number" [(ngModel)]="jiraTask.versionId"  name="versionId" #versionId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subProjectId" >Sub Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="subProjectId" type="number" [(ngModel)]="jiraTask.subProjectId"  name="subProjectId" #subProjectId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subVersionId" >Sub Version Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="subVersionId" type="number" [(ngModel)]="jiraTask.subVersionId"  name="subVersionId" #subVersionId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskTypeId" >Task Type Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskTypeId" type="number" [(ngModel)]="jiraTask.taskTypeId"  name="taskTypeId" #taskTypeId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskId" >Task Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskId" type="number" [(ngModel)]="jiraTask.taskId"  name="taskId" #taskId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="state"  class="required">State</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="state" [(ngModel)]="jiraTask.state"  required   autoResize="true" name="state" #state="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!state.valid && state.dirty && state.errors['required']">
+                        State is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="warning" >Warning</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="warning" [(ngModel)]="jiraTask.warning"   autoResize="true" name="warning" #warning="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="error" >Error</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="error" [(ngModel)]="jiraTask.error"   autoResize="true" name="error" #error="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!jiraTaskForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

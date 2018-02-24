@@ -1,0 +1,91 @@
+    <mat-card *ngIf="gismoImputation" ngForm #gismoImputationForm="ngForm">
+        <mat-card-title>GismoImputation Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="gismoImputation.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskId"  class="required">Task Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskId" type="number" [(ngModel)]="gismoImputation.taskId"  required  name="taskId" #taskId="ngModel" />
+                    
+                    <mat-error *ngIf="!taskId.valid && taskId.dirty && taskId.errors['required']">
+                        Task Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="userId"  class="required">User Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="userId" type="number" [(ngModel)]="gismoImputation.userId"  required  name="userId" #userId="ngModel" />
+                    
+                    <mat-error *ngIf="!userId.valid && userId.dirty && userId.errors['required']">
+                        User Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="imputdate"  class="required">Imputdate</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container>
+                  <input matInput id="imputdate" [matDatepicker]="imputdatePicker" [(ngModel)]="gismoImputation.imputdate"  required  name="imputdate" #imputdate="ngModel">
+                  <mat-datepicker-toggle matSuffix [for]="imputdatePicker"></mat-datepicker-toggle>
+                </mat-input-container>
+                <mat-datepicker #imputdatePicker></mat-datepicker>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="imputtime"  class="required">Imputtime</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="imputtime" type="number" [(ngModel)]="gismoImputation.imputtime"  required  name="imputtime" #imputtime="ngModel" />
+                    
+                    <mat-error *ngIf="!imputtime.valid && imputtime.dirty && imputtime.errors['required']">
+                        Imputtime is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="detail" >Detail</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="detail" [(ngModel)]="gismoImputation.detail"   autoResize="true" name="detail" #detail="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="weeknumberid"  class="required">Weeknumberid</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="weeknumberid" type="number" [(ngModel)]="gismoImputation.weeknumberid"  required  name="weeknumberid" #weeknumberid="ngModel" />
+                    
+                    <mat-error *ngIf="!weeknumberid.valid && weeknumberid.dirty && weeknumberid.errors['required']">
+                        Weeknumberid is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="warning" >Warning</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="warning" [(ngModel)]="gismoImputation.warning"   autoResize="true" name="warning" #warning="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="error" >Error</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="error" [(ngModel)]="gismoImputation.error"   autoResize="true" name="error" #error="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!gismoImputationForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

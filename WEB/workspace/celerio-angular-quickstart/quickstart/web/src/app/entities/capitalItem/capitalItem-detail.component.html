@@ -1,0 +1,42 @@
+    <mat-card *ngIf="capitalItem" ngForm #capitalItemForm="ngForm">
+        <mat-card-title>CapitalItem Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="capitalItem.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="name"  class="required">Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="name" [(ngModel)]="capitalItem.name"  required   autoResize="true" name="name" #name="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!name.valid && name.dirty && name.errors['required']">
+                        Name is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subprojectName"  class="required">Subproject Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="subprojectName" [(ngModel)]="capitalItem.subprojectName"  required   autoResize="true" name="subprojectName" #subprojectName="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!subprojectName.valid && subprojectName.dirty && subprojectName.errors['required']">
+                        Subproject Name is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!capitalItemForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

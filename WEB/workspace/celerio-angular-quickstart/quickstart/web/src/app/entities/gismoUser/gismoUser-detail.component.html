@@ -1,0 +1,56 @@
+    <mat-card *ngIf="gismoUser" ngForm #gismoUserForm="ngForm">
+        <mat-card-title>GismoUser Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="gismoUser.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="name"  class="required">Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="name" [(ngModel)]="gismoUser.name"  required   autoResize="true" name="name" #name="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!name.valid && name.dirty && name.errors['required']">
+                        Name is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="trigramme"  class="required">Trigramme</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="trigramme" type="text" [(ngModel)]="gismoUser.trigramme"  required   name="trigramme" #trigramme="ngModel"/>
+                    
+                    <mat-error *ngIf="!trigramme.valid && trigramme.dirty && trigramme.errors['required']">
+                        Trigramme is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="capitalName" >Capital Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="capitalName" [(ngModel)]="gismoUser.capitalName"   autoResize="true" name="capitalName" #capitalName="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="jiraName" >Jira Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="jiraName" [(ngModel)]="gismoUser.jiraName"   autoResize="true" name="jiraName" #jiraName="ngModel"></textarea>
+                    
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!gismoUserForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

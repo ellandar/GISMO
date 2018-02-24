@@ -1,0 +1,139 @@
+This is a sample 'per project' template.
+
+Templates doc: http://www.jaxio.com/documentation/celerio/templates.html
+
+Here is a simple script:
+
+    ${entity.model.type}: CapitalImputation
+    ${entity.model.var}: capitalImputation
+    ${entity.model.getter}: getCapitalImputation
+    ${entity.service.type}: CapitalImputationService
+    ${entity.service.var}: capitalImputationService
+    ${entity.service.getter}: getCapitalImputationService
+
+    ${entity.model.type}: CapitalItem
+    ${entity.model.var}: capitalItem
+    ${entity.model.getter}: getCapitalItem
+    ${entity.service.type}: CapitalItemService
+    ${entity.service.var}: capitalItemService
+    ${entity.service.getter}: getCapitalItemService
+
+    ${entity.model.type}: CapitalOs
+    ${entity.model.var}: capitalOs
+    ${entity.model.getter}: getCapitalOs
+    ${entity.service.type}: CapitalOsService
+    ${entity.service.var}: capitalOsService
+    ${entity.service.getter}: getCapitalOsService
+
+    ${entity.model.type}: CapitalSubtype
+    ${entity.model.var}: capitalSubtype
+    ${entity.model.getter}: getCapitalSubtype
+    ${entity.service.type}: CapitalSubtypeService
+    ${entity.service.var}: capitalSubtypeService
+    ${entity.service.getter}: getCapitalSubtypeService
+
+    ${entity.model.type}: GismoImputation
+    ${entity.model.var}: gismoImputation
+    ${entity.model.getter}: getGismoImputation
+    ${entity.service.type}: GismoImputationService
+    ${entity.service.var}: gismoImputationService
+    ${entity.service.getter}: getGismoImputationService
+
+    ${entity.model.type}: GismoUser
+    ${entity.model.var}: gismoUser
+    ${entity.model.getter}: getGismoUser
+    ${entity.service.type}: GismoUserService
+    ${entity.service.var}: gismoUserService
+    ${entity.service.getter}: getGismoUserService
+
+    ${entity.model.type}: JiraStates
+    ${entity.model.var}: jiraStates
+    ${entity.model.getter}: getJiraStates
+    ${entity.service.type}: JiraStatesService
+    ${entity.service.var}: jiraStatesService
+    ${entity.service.getter}: getJiraStatesService
+
+    ${entity.model.type}: JiraTask
+    ${entity.model.var}: jiraTask
+    ${entity.model.getter}: getJiraTask
+    ${entity.service.type}: JiraTaskService
+    ${entity.service.var}: jiraTaskService
+    ${entity.service.getter}: getJiraTaskService
+
+    ${entity.model.type}: JiraTaskType
+    ${entity.model.var}: jiraTaskType
+    ${entity.model.getter}: getJiraTaskType
+    ${entity.service.type}: JiraTaskTypeService
+    ${entity.service.var}: jiraTaskTypeService
+    ${entity.service.getter}: getJiraTaskTypeService
+
+    ${entity.model.type}: Profil
+    ${entity.model.var}: profil
+    ${entity.model.getter}: getProfil
+    ${entity.service.type}: ProfilService
+    ${entity.service.var}: profilService
+    ${entity.service.getter}: getProfilService
+
+    ${entity.model.type}: Project
+    ${entity.model.var}: project
+    ${entity.model.getter}: getProject
+    ${entity.service.type}: ProjectService
+    ${entity.service.var}: projectService
+    ${entity.service.getter}: getProjectService
+
+    ${entity.model.type}: ProjectGroup
+    ${entity.model.var}: projectGroup
+    ${entity.model.getter}: getProjectGroup
+    ${entity.service.type}: ProjectGroupService
+    ${entity.service.var}: projectGroupService
+    ${entity.service.getter}: getProjectGroupService
+
+    ${entity.model.type}: SubProject
+    ${entity.model.var}: subProject
+    ${entity.model.getter}: getSubProject
+    ${entity.service.type}: SubProjectService
+    ${entity.service.var}: subProjectService
+    ${entity.service.getter}: getSubProjectService
+
+    ${entity.model.type}: SubVersion
+    ${entity.model.var}: subVersion
+    ${entity.model.getter}: getSubVersion
+    ${entity.service.type}: SubVersionService
+    ${entity.service.var}: subVersionService
+    ${entity.service.getter}: getSubVersionService
+
+    ${entity.model.type}: Task
+    ${entity.model.var}: task
+    ${entity.model.getter}: getTask
+    ${entity.service.type}: TaskService
+    ${entity.service.var}: taskService
+    ${entity.service.getter}: getTaskService
+
+    ${entity.model.type}: TaskLink
+    ${entity.model.var}: taskLink
+    ${entity.model.getter}: getTaskLink
+    ${entity.service.type}: TaskLinkService
+    ${entity.service.var}: taskLinkService
+    ${entity.service.getter}: getTaskLinkService
+
+    ${entity.model.type}: TaskType
+    ${entity.model.var}: taskType
+    ${entity.model.getter}: getTaskType
+    ${entity.service.type}: TaskTypeService
+    ${entity.service.var}: taskTypeService
+    ${entity.service.getter}: getTaskTypeService
+
+    ${entity.model.type}: Version
+    ${entity.model.var}: version
+    ${entity.model.getter}: getVersion
+    ${entity.service.type}: VersionService
+    ${entity.service.var}: versionService
+    ${entity.service.getter}: getVersionService
+
+    ${entity.model.type}: WeekNumber
+    ${entity.model.var}: weekNumber
+    ${entity.model.getter}: getWeekNumber
+    ${entity.service.type}: WeekNumberService
+    ${entity.service.var}: weekNumberService
+    ${entity.service.getter}: getWeekNumberService
+

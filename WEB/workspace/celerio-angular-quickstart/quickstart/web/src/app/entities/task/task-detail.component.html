@@ -1,0 +1,126 @@
+    <mat-card *ngIf="task" ngForm #taskForm="ngForm">
+        <mat-card-title>Task Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="task.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="externalId"  class="required">External Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="externalId" [(ngModel)]="task.externalId"  required   autoResize="true" name="externalId" #externalId="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!externalId.valid && externalId.dirty && externalId.errors['required']">
+                        External Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="name"  class="required">Name</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="name" [(ngModel)]="task.name"  required   autoResize="true" name="name" #name="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!name.valid && name.dirty && name.errors['required']">
+                        Name is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="taskTypeId" >Task Type Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="taskTypeId" type="number" [(ngModel)]="task.taskTypeId"  name="taskTypeId" #taskTypeId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="level" >Level</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-select [(ngModel)]="task.level" name="level" #level="ngModel" style="width: 90%">
+                    <mat-option *ngFor="let levelOption of levelOptions" [value]="levelOption.value">{{ levelOption.label }}</mat-option>
+                </mat-select>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="projectId"  class="required">Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="projectId" type="number" [(ngModel)]="task.projectId"  required  name="projectId" #projectId="ngModel" />
+                    
+                    <mat-error *ngIf="!projectId.valid && projectId.dirty && projectId.errors['required']">
+                        Project Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="versionId"  class="required">Version Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="versionId" type="number" [(ngModel)]="task.versionId"  required  name="versionId" #versionId="ngModel" />
+                    
+                    <mat-error *ngIf="!versionId.valid && versionId.dirty && versionId.errors['required']">
+                        Version Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subProjectId" >Sub Project Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="subProjectId" type="number" [(ngModel)]="task.subProjectId"  name="subProjectId" #subProjectId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="subVersionId" >Sub Version Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="subVersionId" type="number" [(ngModel)]="task.subVersionId"  name="subVersionId" #subVersionId="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="state"  class="required">State</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-select [(ngModel)]="task.state" name="state" #state="ngModel" style="width: 90%">
+                    <mat-option *ngFor="let stateOption of stateOptions" [value]="stateOption.value">{{ stateOption.label }}</mat-option>
+                </mat-select>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="consumedtime" >Consumedtime</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="consumedtime" type="number" [(ngModel)]="task.consumedtime"  name="consumedtime" #consumedtime="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="previewtime" >Previewtime</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="previewtime" type="number" [(ngModel)]="task.previewtime"  name="previewtime" #previewtime="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="remaintime" >Remaintime</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="remaintime" type="number" [(ngModel)]="task.remaintime"  name="remaintime" #remaintime="ngModel" />
+                    
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="isguarantee"  class="required">Isguarantee</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="isguarantee" type="number" [(ngModel)]="task.isguarantee"  required  name="isguarantee" #isguarantee="ngModel" />
+                    
+                    <mat-error *ngIf="!isguarantee.valid && isguarantee.dirty && isguarantee.errors['required']">
+                        Isguarantee is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!taskForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+

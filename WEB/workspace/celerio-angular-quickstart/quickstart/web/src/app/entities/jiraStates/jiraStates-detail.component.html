@@ -1,0 +1,42 @@
+    <mat-card *ngIf="jiraStates" ngForm #jiraStatesForm="ngForm">
+        <mat-card-title>JiraStates Details</mat-card-title>
+        <mat-card-content>
+        <div class="ui-g alignlabels">
+                <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="id"  class="required">Id</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <input matInput id="id" type="number" [(ngModel)]="jiraStates.id"  required  name="id" #id="ngModel" />
+                    
+                    <mat-error *ngIf="!id.valid && id.dirty && id.errors['required']">
+                        Id is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="gismoState"  class="required">Gismo State</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="gismoState" [(ngModel)]="jiraStates.gismoState"  required   autoResize="true" name="gismoState" #gismoState="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!gismoState.valid && gismoState.dirty && gismoState.errors['required']">
+                        Gismo State is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+                 <div class="ui-g-12 ui-md-2 ui-lg-1"><label for="jiraState"  class="required">Jira State</label></div>
+                <div class="ui-g-12 ui-md-10 ui-lg-5">
+                <mat-input-container style="width: 90%">
+                    <textarea matInput id="jiraState" [(ngModel)]="jiraStates.jiraState"  required   autoResize="true" name="jiraState" #jiraState="ngModel"></textarea>
+                    
+                    <mat-error *ngIf="!jiraState.valid && jiraState.dirty && jiraState.errors['required']">
+                        Jira State is required.
+                    </mat-error>
+                </mat-input-container>
+                </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!jiraStatesForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+
