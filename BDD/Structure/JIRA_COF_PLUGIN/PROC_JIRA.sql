@@ -7,26 +7,28 @@ CREATE DEFINER=id4490645_lbarre@% PROCEDURE JIRA_1_IMPORT ()  BEGIN
 -- -----------------------------------------------------------------------------------------------------------------------------
 -- FILLING FIELDS 
 -- -----------------------------------------------------------------------------------------------------------------------------
+INSERT INTO JIRA_TASK (projectName, ident, issueType, summary, status, components, linkedIssue, affVersion, targetVersion, deliveryVersion)
+select JIRA_TASK.projectName, ident, issueType, summary, status, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(JIRA_TASK.components, ',', numbers.n), ',', -1)) as name, linkedIssue, affVersion, targetVersion, deliveryVersion from (select 1 n union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9 union all select 10 union all select 11 union all select 12 union all select 13) numbers INNER JOIN JIRA_TASK on CHAR_LENGTH(JIRA_TASK.components) -CHAR_LENGTH(REPLACE(JIRA_TASK.components, ',', ''))>=numbers.n-1;
 
 -- project_id 
-UPDATE JIRA_TASK SET project_id=(SELECT DISTINCT id FROM PROJECT WHERE PROJECT.name=JIRA_TASK.projectName);
+UPDATE JIRA_TASK SET project_id=(SELECT DISTINCT id FROM GISMO_PROJECT WHERE GISMO_PROJECT.name=JIRA_TASK.projectName);
 
 -- version_id 
-UPDATE JIRA_TASK SET version_id=(SELECT DISTINCT id FROM VERSION WHERE VERSION.name=JIRA_TASK.targetVersion);
-UPDATE JIRA_TASK SET version_id=(SELECT DISTINCT id FROM VERSION WHERE VERSION.name=JIRA_TASK.affVersion) WHERE version_id is null;
+UPDATE JIRA_TASK SET version_id=(SELECT DISTINCT id FROM GISMO_VERSION WHERE GISMO_VERSION.name=JIRA_TASK.targetVersion);
+UPDATE JIRA_TASK SET version_id=(SELECT DISTINCT id FROM GISMO_VERSION WHERE GISMO_VERSION.name=JIRA_TASK.affVersion) WHERE version_id is null;
 
 -- sub_project_id
 UPDATE JIRA_TASK SET JIRA_TASK.sub_project_id=(SELECT DISTINCT id FROM GISMO_SUB_PROJECT WHERE GISMO_SUB_PROJECT.name=JIRA_TASK.components AND GISMO_SUB_PROJECT.project_id = JIRA_TASK.project_id) WHERE issueType in ('DCN','SCO','PCR');
 UPDATE JIRA_TASK SET JIRA_TASK.sub_project_id=(SELECT DISTINCT id FROM GISMO_SUB_PROJECT WHERE GISMO_SUB_PROJECT.name='DEFAULT' AND GISMO_SUB_PROJECT.project_id = JIRA_TASK.project_id) WHERE sub_project_id is null;
 
 -- sub_version_id
-UPDATE JIRA_TASK SET JIRA_TASK.sub_version_id=(SELECT DISTINCT id FROM SUB_VERSION WHERE SUB_VERSION.sub_project_id=JIRA_TASK.sub_project_id AND SUB_VERSION.name=JIRA_TASK.deliveryVersion);
+UPDATE JIRA_TASK SET JIRA_TASK.sub_version_id=(SELECT DISTINCT id FROM GISMO_SUB_VERSION WHERE GISMO_SUB_VERSION.sub_project_id=JIRA_TASK.sub_project_id AND GISMO_SUB_VERSION.name=JIRA_TASK.deliveryVersion);
 
-INSERT INTO SUB_VERSION (name, sub_project_id, version_id) 
+INSERT INTO GISMO_SUB_VERSION (name, sub_project_id, version_id) 
 SELECT DISTINCT deliveryVersion, sub_project_id, version_id
 FROM JIRA_TASK WHERE deliveryVersion is not null AND sub_project_id is not null AND version_id is not null AND sub_version_id is null;
 
-UPDATE JIRA_TASK SET JIRA_TASK.sub_version_id=(SELECT DISTINCT id FROM SUB_VERSION WHERE SUB_VERSION.sub_project_id=JIRA_TASK.sub_project_id AND SUB_VERSION.name=JIRA_TASK.deliveryVersion);
+UPDATE JIRA_TASK SET JIRA_TASK.sub_version_id=(SELECT DISTINCT id FROM GISMO_SUB_VERSION WHERE GISMO_SUB_VERSION.sub_project_id=JIRA_TASK.sub_project_id AND GISMO_SUB_VERSION.name=JIRA_TASK.deliveryVersion);
 
 -- task_type_id
 UPDATE JIRA_TASK SET JIRA_TASK.task_type_id = (SELECT distinct JIRA_TASK_TYPE.task_type_id FROM JIRA_TASK_TYPE WHERE JIRA_TASK_TYPE.issueType = JIRA_TASK.issueType AND JIRA_TASK_TYPE.component = JIRA_TASK.components) WHERE JIRA_TASK.task_type_id is null;
@@ -34,7 +36,7 @@ UPDATE JIRA_TASK SET JIRA_TASK.task_type_id = (SELECT distinct JIRA_TASK_TYPE.ta
 UPDATE JIRA_TASK SET JIRA_TASK.task_type_id = (SELECT distinct JIRA_TASK_TYPE.task_type_id FROM JIRA_TASK_TYPE WHERE JIRA_TASK_TYPE.issueType = JIRA_TASK.issueType AND JIRA_TASK_TYPE.component is null) WHERE JIRA_TASK.task_type_id is null;
 
 -- task_id
-UPDATE JIRA_TASK SET JIRA_TASK.task_id = (SELECT DISTINCT TASK.id FROM TASK WHERE TASK.external_id = JIRA_TASK.ident and JIRA_TASK.project_id = TASK.project_id);
+UPDATE JIRA_TASK SET JIRA_TASK.task_id = (SELECT DISTINCT TASK.id FROM GISMO_TASK WHERE TASK.external_id = JIRA_TASK.ident and JIRA_TASK.project_id = TASK.project_id);
 
 -- state
 UPDATE JIRA_TASK SET state = (SELECT distinct gismo_state FROM JIRA_STATES WHERE JIRA_STATES.jira_state = JIRA_TASK.status);
