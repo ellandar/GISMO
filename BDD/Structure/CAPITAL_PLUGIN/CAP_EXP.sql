@@ -26,7 +26,7 @@ AND capSub.task_type_id = tType.id AND capItem.subProject_name = subP.name AND c
 
 DROP VIEW IF EXISTS `CAPITAL_EXP_VIEW`;
 CREATE VIEW `CAPITAL_EXP_VIEW`
- AS SELECT distinct year(imp.imputDate) as year, month(imp.imputDate) as month, week(imp.imputDate) as week, weekday(imp.imputDate) as weekday, 
+ AS SELECT distinct year(imp.imputDate) as year, month(imp.imputDate) as month, week(imp.imputDate)+1 as week, dayofweek(imp.imputDate) as weekday, 
  gUser.CAPITAL_name as user, capOs.name as OS, imp.imputTime as hour, capSub.capitalSubType as SubType, capItem.name as item, task.external_id as pcr, imp.detail as comment, '' as phase
 FROM GISMO_USER as gUser, 
 GISMO_IMPUTATION as imp,

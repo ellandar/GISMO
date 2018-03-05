@@ -191,4 +191,5 @@ INSERT INTO `CAPITAL_SUBTYPE` ( capitalSubType, capitalItem, project_id, task_ty
 INSERT INTO `CAPITAL_SUBTYPE` ( capitalSubType, capitalItem, project_id, task_type_id) SELECT 'SW-VERIF', '?',  proj.id, tType.id FROM GISMO_PROJECT proj, GISMO_TASK_TYPE tType WHERE proj.id = tType.project_id AND proj.name='Coflight DEV'AND tType.name = 'SW-DOC';
 INSERT INTO `CAPITAL_SUBTYPE` ( capitalSubType, capitalItem, project_id, task_type_id) SELECT 'SW-WPM', '?',  proj.id, tType.id FROM GISMO_PROJECT proj, GISMO_TASK_TYPE tType WHERE proj.id = tType.project_id AND proj.name='Coflight DEV'AND tType.name = 'SW-WPM';
 
-UPDATE CAPITAL_SUBTYPE SET export = false WHERE capitalSubType IN ('OFF-CP', 'OFF-PUBLIC', 'OFF-RTH', 'SW-BASELINE', 'SW-CUT', 'SW-SYS_MODEL','SW-VERIF', 'SW-BID', 'SW-SUPPORT_CUSTOMER', 'SW-SUPPORT_IVV', 'SW-SUPPORT_SE');
+UPDATE CAPITAL_SUBTYPE SET export = false WHERE capitalSubType IN ('OFF-CP', 'OFF-PUBLIC', 'OFF-RTH', 'SW-BASELINE', 'SW-CUT', 'SW-SYS_MODEL','SW-VERIF', 'SW-BID', 'SW-SUPPORT_CUSTOMER', 'SW-SUPPORT_SE', 'SW-COACHING');
+UPDATE CAPITAL_SUBTYPE SET export = true WHERE capitalSubType = 'SW-SYS_MODEL' AND capitalItem = '?';

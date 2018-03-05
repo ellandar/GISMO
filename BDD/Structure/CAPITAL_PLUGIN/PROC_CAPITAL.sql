@@ -68,33 +68,33 @@ BEGIN
 
 	-- TREAT the imputation with complements (get the task_id)
 	UPDATE CAPITAL_IMPUTATION SET complement = null WHERE complement = '' OR complement = '0';
-	UPDATE CAPITAL_IMPUTATION SET  comment = null WHERE comment = '' OR comment = '0';
+	UPDATE CAPITAL_IMPUTATION SET  comment = null WHERE comment = '' OR comment = '0' AND complement is null;
 	UPDATE CAPITAL_IMPUTATION SET  task_id = null ;
 	UPDATE GISMO_TASK SET external_id = null WHERE external_id = '' OR external_id = '0';
 	
-	UPDATE CAPITAL_IMPUTATION SET comment = CONCAT(subType, '#', item) WHERE comment is null;
+	UPDATE CAPITAL_IMPUTATION SET comment = trim(CONCAT(subType, '#', item)) WHERE comment is null;
 	
 	-- CREATE the missing task 
 	INSERT INTO GISMO_TASK(external_id, task_type_id, project_Id, version_id, sub_project_id, state) 
-		SELECT distinct CAPITAL_IMPUTATION.complement, CAPITAL_IMPUTATION.task_type_id, CAPITAL_IMPUTATION.project_id, CAPITAL_IMPUTATION.version_id,CAPITAL_IMPUTATION.sub_project_id, 'IN_PROGRESS'
+		SELECT distinct trim(CAPITAL_IMPUTATION.complement), CAPITAL_IMPUTATION.task_type_id, CAPITAL_IMPUTATION.project_id, CAPITAL_IMPUTATION.version_id,CAPITAL_IMPUTATION.sub_project_id, 'IN_PROGRESS'
 		FROM CAPITAL_IMPUTATION 
 		WHERE CAPITAL_IMPUTATION.complement is not null 
 		AND CAPITAL_IMPUTATION.warning is null AND CAPITAL_IMPUTATION.error is null 
 		AND CAPITAL_IMPUTATION.task_id is null 
-		AND CAPITAL_IMPUTATION.complement not in (SELECT DISTINCT external_id FROM GISMO_TASK);
+		AND trim(CAPITAL_IMPUTATION.complement) not in (SELECT DISTINCT gTask.external_id FROM GISMO_TASK gTask WHERE gTask.task_type_id = CAPITAL_IMPUTATION.task_type_id);
 	-- UPDATE the task_id
-	UPDATE CAPITAL_IMPUTATION SET task_id = (SELECT distinct id FROM GISMO_TASK WHERE GISMO_TASK.external_id = CAPITAL_IMPUTATION.complement AND GISMO_TASK.external_id != '' AND CAPITAL_IMPUTATION.sub_project_id = GISMO_TASK.sub_project_id AND GISMO_TASK.task_type_id = CAPITAL_IMPUTATION.task_type_id AND CAPITAL_IMPUTATION.version_id = GISMO_TASK.version_id) WHERE CAPITAL_IMPUTATION.complement is not null;
+	UPDATE CAPITAL_IMPUTATION SET task_id = (SELECT distinct id FROM GISMO_TASK WHERE GISMO_TASK.external_id = trim(CAPITAL_IMPUTATION.complement) AND GISMO_TASK.external_id != '' AND CAPITAL_IMPUTATION.sub_project_id = GISMO_TASK.sub_project_id AND GISMO_TASK.task_type_id = CAPITAL_IMPUTATION.task_type_id AND CAPITAL_IMPUTATION.version_id = GISMO_TASK.version_id) WHERE CAPITAL_IMPUTATION.complement is not null;
 
 	-- TREAT the imputation without complements and with comments (get the task_id)
 	-- CREATE the missing task 
 	INSERT INTO GISMO_TASK(external_id, name, task_type_id, project_Id, version_id, sub_project_id, state) 
-	SELECT distinct CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment), CAPITAL_IMPUTATION.comment, CAPITAL_IMPUTATION.task_type_id, CAPITAL_IMPUTATION.project_id, CAPITAL_IMPUTATION.version_id, CAPITAL_IMPUTATION.sub_project_id, 'IN_PROGRESS'
+	SELECT distinct trim(CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment)), CAPITAL_IMPUTATION.comment, CAPITAL_IMPUTATION.task_type_id, CAPITAL_IMPUTATION.project_id, CAPITAL_IMPUTATION.version_id, CAPITAL_IMPUTATION.sub_project_id, 'IN_PROGRESS'
 	FROM CAPITAL_IMPUTATION 
 	WHERE CAPITAL_IMPUTATION.comment is not null 
 	AND CAPITAL_IMPUTATION.warning is null AND CAPITAL_IMPUTATION.error is null AND CAPITAL_IMPUTATION.task_id is null 
-	AND CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment) not in (SELECT DISTINCT external_id FROM GISMO_TASK);
+	AND trim(CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment)) not in (SELECT DISTINCT gTask.external_id FROM GISMO_TASK gTask WHERE gTask.task_type_id = CAPITAL_IMPUTATION.task_type_id );
 	-- UPDATE the task_id
-	UPDATE CAPITAL_IMPUTATION SET task_id = (SELECT distinct id FROM GISMO_TASK WHERE GISMO_TASK.external_id like CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment) AND GISMO_TASK.external_id != '' AND CAPITAL_IMPUTATION.sub_project_id = GISMO_TASK.sub_project_id AND GISMO_TASK.task_type_id = CAPITAL_IMPUTATION.task_type_id AND CAPITAL_IMPUTATION.version_id = GISMO_TASK.version_id) WHERE CAPITAL_IMPUTATION.comment is not null and CAPITAL_IMPUTATION.task_id is null;
+	UPDATE CAPITAL_IMPUTATION SET task_id = (SELECT distinct id FROM GISMO_TASK WHERE GISMO_TASK.external_id like trim(CONCAT('CAPITAL_', CAPITAL_IMPUTATION.comment)) AND GISMO_TASK.external_id != '' AND CAPITAL_IMPUTATION.sub_project_id = GISMO_TASK.sub_project_id AND GISMO_TASK.task_type_id = CAPITAL_IMPUTATION.task_type_id AND CAPITAL_IMPUTATION.version_id = GISMO_TASK.version_id) WHERE CAPITAL_IMPUTATION.comment is not null and CAPITAL_IMPUTATION.task_id is null;
 	 
 	-- Update the existing GISMO imputation of the same task on the same user on the same day (modification of imputTime)
 	UPDATE GISMO_IMPUTATION GISMO SET imputTime = (SELECT DISTINCT cap.timeConsume FROM CAPITAL_IMPUTATION as cap, GISMO_WEEK_NUMBER as week 
