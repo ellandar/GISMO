@@ -22,6 +22,7 @@ CREATE TABLE `GISMO_TASK` (
   `consumedTime` int(11) DEFAULT NULL,
   `previewTime` int(11) DEFAULT NULL,
   `remainTime` int(11) DEFAULT NULL,
+  `isReport` tinyint(1) NOT NULL DEFAULT '0',
   `isGuarantee` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
